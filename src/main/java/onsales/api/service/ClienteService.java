@@ -72,13 +72,13 @@ public class ClienteService {
     public List<ClienteContatosResponseDTO> listarClienteESeusContatos(UUID id){
         Cliente cliente = clienteRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado"));
-        return clienteRepository.findAll().stream().map(ClienteContatosResponseDTO::new).toList();
+        return List.of(new ClienteContatosResponseDTO(cliente));
     }
 
     public List<ClienteEnderecoResponseDTO> listarClienteESeusEnderecos(UUID id) {
         Cliente cliente = clienteRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado"));
-        return clienteRepository.findAll().stream().map(ClienteEnderecoResponseDTO::new).toList();
+        return List.of(new ClienteEnderecoResponseDTO(cliente));
     }
 }
 
